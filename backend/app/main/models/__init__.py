@@ -4,4 +4,4 @@ db = SQLAlchemy()
 
 from .UserModel import UserModel
 from .CategoryModel import CategoryModel
-# from .BooksModel import BooksModel
+from .BooksModel import BooksModel
