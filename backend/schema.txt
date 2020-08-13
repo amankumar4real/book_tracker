@@ -1,3 +1,7 @@
 user -> id, name, email, password, mobile;
 books -> id, name, cat_id, user_id, price, quantity 
 category_model -> id, genre
+
+routes -> 
+    listing = books/listing (get)
+    add = books/add(post)
