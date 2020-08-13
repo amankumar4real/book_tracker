@@ -39,7 +39,7 @@ class Register extends React.Component{
         return(
             <>
                 <div className="row mt-5">
-                    <div className="offset-5 col-2">
+                    <div className="offset-4 col-4">
                         <form>
                             <div class="form-group">
                                 <label>Name</label>
