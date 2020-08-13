@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
-import {doListing, doDel} from "../React/action"
+import {doListing, doDel, logOut} from "../React/action"
 import {Link} from "react-router-dom"
 
 class Listing extends React.Component{
@@ -13,6 +13,9 @@ class Listing extends React.Component{
     }
 
     componentDidMount(){
+        if(this.props.token == ""){
+            this.props.history.push("/login")
+        }
         this.props.doListing(this.props.token)
     }
 
@@ -31,17 +34,26 @@ class Listing extends React.Component{
         }, 1500)
     }
 
+    handleOut = () => {
+        this.props.logOut()
+    }
+
     render(){
 
-        const {listing_data, login_id} = this.props
+        const {listing_data, login_id, token} = this.props
 
         console.log(listing_data)
+
+        if(token == ""){
+            this.props.history.push("/login")
+        }
 
         if(listing_data){
             return(
                 <>
                     <div class="offset-3 col-6 text-center my-5">
-                        <button onClick={this.handleAdd} className="btn btn-success btn">Add Books</button>
+                        <button onClick={this.handleAdd} className="btn btn-success">Add Books</button>
+                        <button onClick={this.handleOut} className="btn btn-danger">LogOut</button>
                     </div>
                     <table class="table table-dark offset-3 col-6">
                         <thead>
@@ -106,7 +118,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return{
         doListing: payload => dispatch(doListing(payload)),
-        doDel: payload => dispatch(doDel(payload))
+        doDel: payload => dispatch(doDel(payload)),
+        logOut: payload => dispatch(logOut(payload))
     }
 }
 

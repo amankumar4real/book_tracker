@@ -3,7 +3,8 @@ import {fetch_reg, fetch_reg_succ, fetch_reg_fail,
         fetch_listing, fetch_listing_succ, fetch_listing_fail,
         fetch_add, fetch_add_succ, fetch_add_fail,
         fetch_del, fetch_del_succ, fetch_del_fail,
-        fetch_edit, fetch_edit_succ, fetch_edit_fail
+        fetch_edit, fetch_edit_succ, fetch_edit_fail,
+        logout
         } from "./actionType";
 
 const initState = {
@@ -60,6 +61,13 @@ export default (state = initState, {type, payload}) => {
             return{
                 ...state
                 // listing_data: payload.result
+            }
+
+        case logout:
+            return{
+                ...state,
+                token: "",
+                track_log: true
             }
         
         default:

@@ -3,7 +3,8 @@ import {fetch_reg, fetch_reg_succ, fetch_reg_fail,
         fetch_listing, fetch_listing_succ, fetch_listing_fail,
         fetch_add, fetch_add_succ, fetch_add_fail,
         fetch_del, fetch_del_succ, fetch_del_fail,
-        fetch_edit, fetch_edit_succ, fetch_edit_fail
+        fetch_edit, fetch_edit_succ, fetch_edit_fail,
+        logout
         } from "./actionType";
 import axios from "axios";
 
@@ -107,6 +108,13 @@ export const fetchEditFail = payload => ({
     payload
 })
 
+//logout
+
+export const logOut = payload => ({
+    type: logout,
+    payload
+})
+
 // axios calls
 export const doReg = payload => dispatch => {
     dispatch(fetchReg)
@@ -190,6 +198,7 @@ export const doEdit = payload => dispatch => {
                     "Content-Type": "application/json",
                     "Auth": payload.token
                 },
+                body: JSON.stringify(payload.data)
             })
             .then(res=> res.json())
             .then(res=> dispatch(fetchEditSucc(res)))

@@ -22,3 +22,5 @@ export const fetch_edit = "fetch_edit"
 export const fetch_edit_succ = "fetch_edit_succ"
 export const fetch_edit_fail = "fetch_edit_fail"
 
+
+export const logout = "logout"
