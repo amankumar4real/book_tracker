@@ -25,31 +25,48 @@ class Login extends React.Component{
     }
 
     render() {
-        return (
-             <>
-                <div className="row mt-5">
-                    <div className="offset-4 col-4">
-                        <form>
-                            <div class="form-group">
-                                <label >Email</label>
-                                <input name = "email" value= {this.state.email} onChange={this.handleChange} type="text" class="form-control" placeholder="name@example.com"/>
+        const {track_log, login_id} = this.props
+
+        // console.log(track_log)
+
+        if(track_log == true){
+            return (
+                        <>
+                            <div className="row mt-5">
+                                <div className="offset-4 col-4">
+                                    <form>
+                                        <div class="form-group">
+                                            <label >Email</label>
+                                            <input name = "email" value= {this.state.email} onChange={this.handleChange} type="text" class="form-control" placeholder="name@example.com"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Password</label>
+                                            <input name = "password" value= {this.state.password} onChange={this.handleChange} type="password" class="form-control"/>
+                                        </div>
+                                        <button onClick={this.handleSubmit} className="btn btn-primary">Sign Up!</button>
+                                    </form>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input name = "password" value= {this.state.password} onChange={this.handleChange} type="password" class="form-control"/>
-                            </div>
-                            <button onClick={this.handleSubmit} className="btn btn-primary">Sign Up!</button>
-                        </form>
-                    </div>
+                            
+                        </>
+                    )
+        }
+        else{
+            return(
+                <div>
+                    {this.props.history.push(`/listing/${login_id}`)}
                 </div>
-             </>
-        )
+            )
+        }
+
+        
     }
 }
 
 const mapStateToProps = state => {
     return{
-        track_log: state.track_log
+        track_log: state.track_log,
+        login_id: state.login_id
     }
 }
 

@@ -116,6 +116,6 @@ def listingBooks(token):
     if status is False:
         return json.dumps({"error": True, "message": "Token has expired!"})
 
-    books = db.session.execute('''SELECT * FROM books''')
+    books = db.session.execute('''SELECT u.name as user_name, u.id as user_id, c.genre, b.* FROM books as b JOIN category_model as c ON c.id = b.cat_id JOIN user as u ON u.id = b.user_id''')
     
-    return jsonify({"error": False, "message": "Data send!", 'result': [dict(row) for row in books]})
+    return jsonify({"error": False, "message": "Data send!",'result': [dict(row) for row in books]})

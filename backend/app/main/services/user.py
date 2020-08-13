@@ -65,11 +65,11 @@ def login(details):
 
             encode_jwt = jwt.encode(my_data, SECRET_KEY)
 
-            user_name = db.session.execute('''SELECT name from user where email = "%s" and password = "%s"'''%(email, password))
+            user_name = db.session.execute('''SELECT * from user where email = "%s" and password = "%s"'''%(email, password))
 
             user_data = [dict(row) for row in user_name]
 
-            return jsonify({"error": False, "message": "user logged in!", "name": user_data[0]["name"], "token": encode_jwt.decode()})
+            return jsonify({"error": False, "message": "user logged in!", "name": user_data[0]["name"], "id": user_data[0]["id"], "token": encode_jwt.decode()})
 
         else:
             return jsonify({"error": True, "message": "Entered password is wrong!"})
