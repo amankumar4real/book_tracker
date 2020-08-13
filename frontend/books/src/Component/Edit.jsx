@@ -44,6 +44,10 @@ class Edit extends React.Component{
         }, 1500)
     }
 
+    handleChangeSel = (event) => {
+        this.setState({cat_id: event.target.value});
+      }
+
     render() {
         // const {track_log, login_id} = this.props
         return (

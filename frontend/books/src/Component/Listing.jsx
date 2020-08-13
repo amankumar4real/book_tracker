@@ -52,7 +52,7 @@ class Listing extends React.Component{
             return(
                 <>
                     <div class="offset-3 col-6 text-center my-5">
-                        <button onClick={this.handleAdd} className="btn btn-success">Add Books</button>
+                        <button onClick={this.handleAdd} className="btn btn-success mr-2">Add Books</button>
                         <button onClick={this.handleOut} className="btn btn-danger">LogOut</button>
                     </div>
                     <table class="table table-dark offset-3 col-6">

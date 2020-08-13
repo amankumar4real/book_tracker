@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {doReg} from "../React/action"
-
+import {Link} from "react-router-dom"
 
 class Register extends React.Component{
     constructor(props){
@@ -38,6 +38,10 @@ class Register extends React.Component{
 
         return(
             <>
+            <span className="offset-5 mb-5 col-2 mt- 5 text-center">
+                <Link className="text-center mr-5" to="/login">Login</Link>
+                <Link className="text-center" to="/">Home</Link>
+            </span>
                 <div className="row mt-5">
                     <div className="offset-4 col-4">
                         <form>
